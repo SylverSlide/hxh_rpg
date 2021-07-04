@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ pin.title }}</title>
-</head>
-<body>
-    <article>
-        <h1>{{ pin.title }}</h1>
-            <p> {{ pin.description }} </p>
-    </article>
-    <a href="{{ path('app_home') }}">Go Back</a>
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block title %}Pin {{pin.id}}
+{% endblock %}
+
+{% block body %}
+	{#<h1>{{ pluralize(pins|length, 'Pin') }}</h1>#}
+
+	<article>
+		<h1>{{ pin.title }}</h1>
+		<p>
+			{{ pin.description }}
+		</p>
+	</article>
+
+
+	<nav>
+		<ul>
+			<li><a href="{{ path('app_pins_edit' , { id: pin.id })}}">Edit</a></li>
+			<li><a href="{{ path('app_home') }}">Go Back</a></li>
+		</ul>
+	</nav>
+{% endblock %}
