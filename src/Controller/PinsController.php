@@ -58,7 +58,7 @@ class PinsController extends AbstractController
 
 
     /**
-     * @Route("/pins/{id}/edit",priority=9, name="app_pins_edit" , methods={"GET", "PUT" , "POST"})
+     * @Route("/pins/{id}/edit",priority=9, name="app_pins_edit" , methods={"GET", "PUT"})
      */
     public function edit(Pin $pin ,Request $request, EntityManagerInterface $em): Response{
 
@@ -80,5 +80,17 @@ class PinsController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/pins/{id}/delete",priority=5, name="app_pins_delete" , methods={"DELETE"})
+     */
+    public function delete(Pin $pin ,Request $request, EntityManagerInterface $em): Response{
+
+        $em->remove($pin);
+        $em->flush();
+
+        return $this->redirectToRoute('app_home');
+    }
+
 
 }
