@@ -14,7 +14,6 @@ class PinType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->setMethod('PUT')
         ;
 
     }
