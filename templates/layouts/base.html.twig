@@ -38,7 +38,8 @@
 		{# Run `composer require symfony/webpack-encore-bundle`
 				           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
-
+		<link rel="stylesheet" href="{{ absolute_url(asset('build/base.css')) }}"/>
+		{{ encore_entry_link_tags('Bulma') }}
 		{% endblock %}
 
 		{% block javascripts %}
