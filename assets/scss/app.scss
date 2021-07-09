@@ -7,7 +7,18 @@ body {
     background-color:lightgray;
     font-family:$primary-font, sans-serif; 
 }
+a {
+    color: black ;
 
+    &:visited {
+        color:black;
+    }
+
+    &:hover {
+
+        color:green;
+    }
+}
 .alert {
     padding: 10px;
     color: white;
