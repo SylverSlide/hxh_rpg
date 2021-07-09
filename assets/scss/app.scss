@@ -1,0 +1,36 @@
+@import 'shared/_variables';
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Qahiri&display=swap');
+@import '~bootstrap';
+
+body {
+    background-color:lightgray;
+    font-family:$primary-font, sans-serif; 
+}
+
+.alert {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    margin: 0;
+    border: none;
+    border-radius: 0px;
+    font-family:$secondary-font, sans-serif; 
+    font-size: 2em;
+
+    &.alert-success {
+        background-color: green;
+    
+    }
+    
+    &.alert-error {
+        background-color: red;
+    }
+    
+    
+    &.alert-info {
+        background-color: blue;
+    }
+    
+}
+
