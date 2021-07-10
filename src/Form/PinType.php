@@ -19,11 +19,10 @@ class PinType extends AbstractType
                 'allow_delete' => true,
                 'delete_label' => 'Delete',
                 'download_uri' => false,
+
             ])
             ->add('title')
-            ->add('description')
-        ;
-
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver)
