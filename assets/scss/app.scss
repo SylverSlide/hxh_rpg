@@ -8,18 +8,7 @@ body {
     font-family:$primary-font, sans-serif; 
     margin-bottom: 100px;
 }
-a {
-    color: black ;
 
-    &:visited {
-        color:black;
-    }
-
-    &:hover {
-
-        color:green;
-    }
-}
 .alert {
     padding: 10px;
     color: white;
