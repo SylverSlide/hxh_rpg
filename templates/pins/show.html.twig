@@ -13,9 +13,9 @@
 						<img class="w-100 " src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('build/images/placeholder.png')) | imagine_filter('fixed_size_300_300') }}" alt="{{pin.title}}">
 					</a>
 				</div>
-				<h2 class="h5 ps-3 pt-3">
+				<h1 class="h5 ps-3 pt-3">
 					<a class="text-secondary text-decoration-none" href="{{ path('app_pins_show', { id: pin.id }) }}">{{ pin.title }}</a>
-				</h2>
+				</h1>
 				<p class="ps-3 pb-3 text-muted">
 					<small>Submitted
 						<time datetime="{{pin.createdAt|date('Y-m-d H:i:s') }}">{{pin.createdAt|ago}}</time>
