@@ -57,7 +57,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         if($this->session instanceof Session){
             
-            $this->session->getFlashBag()->add('success' ,'Logged in successfully');
+            $this->session->getFlashBag()->add('success' ,
+            'Welcome ' . $token->getUser()->getFullName());
         }
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {

@@ -2,11 +2,17 @@
 
 namespace App\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
+use Symfony\Component\Security\Core\Security;
 
 class AppExtension extends AbstractExtension
-{
+{   
+    private $security;
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
 
     public function getFunctions(): array
     {
@@ -17,6 +23,7 @@ class AppExtension extends AbstractExtension
 
     public function pluralize(int $count, string $singular, ?string $plural = null)
     {
+        //dd($this->security->getUser()); Intéressant pour accéder aux user dans twig ça peut servir
         $plural = $plural ?? $singular . 's';
         
         $str = $count === 1 ? $singular : $plural;
