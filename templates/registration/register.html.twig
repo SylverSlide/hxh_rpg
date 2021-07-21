@@ -4,21 +4,38 @@
 {% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
+	<div class="row">
+		<div class="col-md-6 mx-auto">
 
-    <h1>Register</h1>
+			{% for flashError in app.flashes('verify_email_error') %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+				<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+			{% endfor %}
 
-        <button type="submit" class="btn btn-primary w-100">Register</button>
-    {{ form_end(registrationForm) }}
+			<h1 class="text-center mt-5">Create an account </h1>
+
+			{{ form_start(registrationForm) }}
+			<div class="row">
+				<div class="col-md-6">
+					{{ form_row(registrationForm.firstName) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(registrationForm.lastName) }}
+				</div>
+			</div>
+
+			{{ form_row(registrationForm.email) }}
+			{{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+			{{ form_row(registrationForm.agreeTerms) }}
+
+			<button type="submit" class="btn btn-primary w-100">Register</button>
+            <p class="mt-5 mb-3 text-center text-muted">
+                Already have an account ? <a href="{{ path('app_login') }}">Log in</a>
+            </p>
+			{{ form_end(registrationForm) }}
+
+		</div>
+	</div>
 {% endblock %}

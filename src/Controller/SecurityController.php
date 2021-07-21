@@ -32,7 +32,6 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
-        $this->addFlash('success', 'Déconnecté');
-        //throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
