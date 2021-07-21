@@ -5,11 +5,14 @@ namespace App\Twig;
 use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\String\Inflector\EnglishInflector;
+use Symfony\Component\String\Inflector\FrenchInflector;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AppExtension extends AbstractExtension
 {   
     private $security;
-    public function __construct(Security $security)
+    public function __construct(Security $security , SluggerInterface $slugger)
     {
         $this->security = $security;
     }
@@ -23,6 +26,10 @@ class AppExtension extends AbstractExtension
 
     public function pluralize(int $count, string $singular, ?string $plural = null)
     {
+        $inflector = new FrenchInflector();
+
+        //dd($inflector->pluralize('personne')); mets au pluriel
+        //dd($inflector->singularize('personne')); mets au singulier
         //dd($this->security->getUser()); Intéressant pour accéder aux user dans twig ça peut servir
         $plural = $plural ?? $singular . 's';
         
