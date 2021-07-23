@@ -23,10 +23,12 @@ class PinsController extends AbstractController
     {
         $queryBuilder = $pinRepository->findBy([], ['createdAt' => 'ASC']);
 
+        $limitPerPage = Pin::NUM_ITEMS_PER_PAGE;
+
         $pins = $paginator->paginate(
             $queryBuilder, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            9/*limit per page*/
+            $limitPerPage/*limit per page*/
         );
 
 
