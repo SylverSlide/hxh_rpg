@@ -35,6 +35,7 @@
 				{% endfor %}
 			</div>
 		{% endfor %}
+		{{ knp_pagination_render(pins) }}
 	{% else %}
 		<p id="no_pin_title" class="h1 text-center">No pins yet.
 			<a href="{{ path('app_pins_create') }}">Be the first!</a>
