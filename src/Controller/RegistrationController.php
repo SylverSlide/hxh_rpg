@@ -29,10 +29,7 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordHasherInterface $passwordEncoder , EntityManagerInterface $em): Response
     {
-        if ($this->getUser()) {
-            $this->addFlash('error' , 'Already logged in');
-            return $this->redirectToRoute('app_home');
-        }
+
 
         $user = new User;
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -83,9 +80,9 @@ class RegistrationController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $exception->getReason());
+            $this->addFlash('error', $exception->getReason());
             
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_home');
         }
         
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
