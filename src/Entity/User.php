@@ -46,6 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message="Entrer votre email")
+     * @Assert\Email(message="Entrer une adresse mail valide")
      */
     private $email;
 
