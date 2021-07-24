@@ -1,57 +1,54 @@
-@import 'shared/_variables';
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Qahiri&display=swap');
-@import '~bootstrap';
+@import "shared/_variables";
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Qahiri&display=swap");
+@import "~bootstrap";
 
 body {
-    background-color:lightgray;
-    font-family:$primary-font, sans-serif; 
+  background-color: lightgray;
+  font-family: $primary-font, sans-serif;
+  min-height: 1000px;
+  margin-bottom: 50px;
 }
 
 .alert {
-    padding: 10px;
-    color: white;
-    text-align: center;
-    margin: 0;
-    border: none;
-    border-radius: 0px;
-    font-family:$secondary-font, sans-serif; 
-    font-size: 2em;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  margin: 0;
+  border: none;
+  border-radius: 0px;
+  font-family: $primary-font, sans-serif;
+  font-size: 1em;
 
-    &.alert-success {
-        background-color: green;
-    
-    }
-    
-    &.alert-error {
-        background-color: red;
-    }
-    
-    
-    &.alert-info {
-        background-color: blue;
-    }
-    
+  &.alert-success {
+    background-color: green;
+  }
+
+  &.alert-error {
+    background-color: red;
+  }
+
+  &.alert-info {
+    background-color: blue;
+  }
 }
 .vich-image {
+  .form-check {
+    @extend .mt-3;
+  }
 
-        .form-check {
-            @extend .mt-3
-        }
-    
-        img {
-    @extend .mb-2, .rounded , .shadow ,.img-thumbnail ;
-
-        }
+  img {
+    @extend .mb-2, .rounded, .shadow, .img-thumbnail;
+  }
 }
 
 #no_pin_title {
-    margin-top:100px;
+  margin-top: 100px;
 }
 
-.pin img{
-    transition: transform 0.3s ease-out;
-    &:hover {
-        transform: scale(1.075);
-    }
+.pin img {
+  transition: transform 0.3s ease-out;
+  &:hover {
+    transform: scale(1.075);
+  }
 }

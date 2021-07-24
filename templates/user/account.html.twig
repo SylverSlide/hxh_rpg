@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Account
+{% endblock %}
+
+{% block body %}
+<h1>Account parameters</h1>
+    {% if app.user.isVerified %}<h2 class="h5 mt-3"> - Votre compte est vérifié</h2>
+    {% else %}<p>Votre compte n'est pas vérifié , cliquer pour renvoyer un lien de confirmation sur votre adresse mail : <strong>{{ app.user.getEmail }}</strong></p>
+    <a id="confirmation_mail" class="mb-5 btn btn-primary" href="{{ path('app_reverify_email') }}">Renvoyer un lien de confirmation</a>
+    {% endif %}
+
+
+{% endblock %}

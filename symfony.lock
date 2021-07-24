@@ -259,6 +259,18 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "9d254a22efca7264203eea98b866f16f944b2f09"
+        },
+        "files": [
+            "./public/.htaccess"
+        ]
+    },
     "symfony/asset": {
         "version": "v5.3.2"
     },
@@ -503,6 +515,15 @@
     "symfony/proxy-manager-bridge": {
         "version": "v5.3.0"
     },
+    "symfony/requirements-checker": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "02c6e4b9b117c39e8a23eab7f3840ef6e62293b9"
+        }
+    },
     "symfony/routing": {
         "version": "5.3",
         "recipe": {
@@ -656,6 +677,18 @@
     },
     "symfony/yaml": {
         "version": "v5.3.3"
+    },
+    "symfonycasts/reset-password-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "97c1627c0384534997ae1047b93be517ca16de43"
+        },
+        "files": [
+            "./config/packages/reset_password.yaml"
+        ]
     },
     "symfonycasts/verify-email-bundle": {
         "version": "v1.5.0"

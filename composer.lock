@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "048afe4fa8a4cbc6a2980fe397186988",
+    "content-hash": "9c79861822d781273ba78b85faa78afa",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -2813,6 +2813,32 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v6.1.5"
             },
             "time": "2021-05-31T10:40:46+00:00"
+        },
+        {
+            "name": "symfony/apache-pack",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "reference": "3aa5818d73ad2551281fc58a75afd9ca82622e6c",
+                "shasum": ""
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "support": {
+                "issues": "https://github.com/symfony/apache-pack/issues",
+                "source": "https://github.com/symfony/apache-pack/tree/master"
+            },
+            "time": "2017-12-12T01:46:35+00:00"
         },
         {
             "name": "symfony/asset",
@@ -6307,6 +6333,72 @@
             "time": "2021-05-26T12:52:38+00:00"
         },
         {
+            "name": "symfony/requirements-checker",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/requirements-checker.git",
+                "reference": "e3d5565eb69a4a2195905c8669f32e988c8e6be0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/requirements-checker/zipball/e3d5565eb69a4a2195905c8669f32e988c8e6be0",
+                "reference": "e3d5565eb69a4a2195905c8669f32e988c8e6be0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "bin": [
+                "bin/requirements-checker"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Requirements\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Check Symfony requirements and give recommendations",
+            "keywords": [
+                "configuration",
+                "distribution"
+            ],
+            "support": {
+                "issues": "https://github.com/symfony/requirements-checker/issues",
+                "source": "https://github.com/symfony/requirements-checker/tree/v2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-09-16T06:15:56+00:00"
+        },
+        {
             "name": "symfony/routing",
             "version": "v5.3.0",
             "source": {
@@ -8100,6 +8192,57 @@
                 }
             ],
             "time": "2021-06-24T08:13:00+00:00"
+        },
+        {
+            "name": "symfonycasts/reset-password-bundle",
+            "version": "v1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SymfonyCasts/reset-password-bundle.git",
+                "reference": "775e847613737f55cf06c6a7457f4bcf8ce258e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SymfonyCasts/reset-password-bundle/zipball/775e847613737f55cf06c6a7457f4bcf8ce258e5",
+                "reference": "775e847613737f55cf06c6a7457f4bcf8ce258e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/config": "^4.4 | ^5.0",
+                "symfony/dependency-injection": "^4.4 | ^5.0",
+                "symfony/deprecation-contracts": "^2.2",
+                "symfony/http-kernel": "^4.4 | ^5.0"
+            },
+            "conflict": {
+                "doctrine/orm": "<2.7",
+                "symfony/framework-bundle": "<4.4",
+                "symfony/http-foundation": "<4.4"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "^2.0.3",
+                "doctrine/orm": "^2.7",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "symfony/framework-bundle": "^4.4 | ^5.0",
+                "symfony/phpunit-bridge": "^5.0",
+                "vimeo/psalm": "^4.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SymfonyCasts\\Bundle\\ResetPassword\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Symfony bundle that adds password reset functionality.",
+            "support": {
+                "issues": "https://github.com/SymfonyCasts/reset-password-bundle/issues",
+                "source": "https://github.com/SymfonyCasts/reset-password-bundle/tree/v1.9.1"
+            },
+            "time": "2021-07-12T18:59:28+00:00"
         },
         {
             "name": "symfonycasts/verify-email-bundle",

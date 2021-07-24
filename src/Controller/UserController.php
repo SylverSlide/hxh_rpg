@@ -34,17 +34,6 @@ class UserController extends AbstractController
     public function SendVerifyUserEmail(Request $request ): Response
     {
         
-        $session = $request->getSession();
-        
-        $session->set('confirmation-mail', true);
-        
-        $confirmationMail = $session->get('confirmation-mail');
-
-        if($confirmationMail){
-            $this->addFlash('error', 'Un mail vous a déjà été envoyé, vérifié vos spams');
-            return $this->render('user/account.html.twig');
-        }
-        
         $this->addFlash('success', 'Un mail vous a été envoyé');
             if ($this->getUser() && !($this->getUser()->isVerified())) {
             $user = $this->getUser();
@@ -59,7 +48,7 @@ class UserController extends AbstractController
                 ->htmlTemplate('emails/registration/confirmation_email.html.twig')
             );
 
-            return $this->render('user/account.html.twig');
+            return $this->redirectToRoute('app_home');
         }
     }
 }
