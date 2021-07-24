@@ -3,20 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
+use Symfony\Component\Mime\Address;
 use App\Form\ChangePasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
-use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 /**
  * @Route("/reset-password")
@@ -27,9 +28,13 @@ class ResetPasswordController extends AbstractController
 
     private $resetPasswordHelper;
 
-    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
+    private $userRepository;
+
+    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper , UserRepository $userRepository)
     {
         $this->resetPasswordHelper = $resetPasswordHelper;
+
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -133,10 +138,9 @@ class ResetPasswordController extends AbstractController
 
     private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer): RedirectResponse
     {
-        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-            'email' => $emailFormData,
-        ]);
-
+        $user = $this->userRepository->findOneByEmail($emailFormData);
+        
+        
         // Do not reveal whether a user account was found or not.
         if (!$user) {
             return $this->redirectToRoute('app_check_email');
