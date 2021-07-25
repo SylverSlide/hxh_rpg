@@ -2,14 +2,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Qahiri&display=swap");
 @import "~bootstrap";
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+
 
 body {
   background-color: lightgray;
   font-family: $primary-font, sans-serif;
-  min-height: 1000px;
-  margin-bottom: 50px;
+  position: relative;
+  padding-bottom:150px;
+  min-height: 980px;
 }
-
+footer {
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  right: 0;
+}
 .alert {
   padding: 10px;
   color: white;
@@ -47,6 +60,13 @@ body {
 }
 
 .pin img {
+  transition: transform 0.3s ease-out;
+  &:hover {
+    transform: scale(1.075);
+  }
+}
+
+#avatar_profil{
   transition: transform 0.3s ease-out;
   &:hover {
     transform: scale(1.075);

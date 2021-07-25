@@ -10,22 +10,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class UserController extends AbstractController
+class AccountController extends AbstractController
 {
 
     private $emailVerifier;
-
+    
     public function __construct(EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
     }
-
+    
     /**
      * @Route("/account", name="app_account")
      */
     public function index(): Response
     {
-        return $this->render('user/account.html.twig');
+        return $this->render('account/show.html.twig');
     }
 
             /**
