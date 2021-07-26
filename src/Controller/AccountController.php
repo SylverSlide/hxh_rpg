@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Form\UserFormType;
 use App\Security\EmailVerifier;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mime\Address;
+use App\Form\ChangePasswordFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AccountController extends AbstractController
 {
@@ -93,6 +95,39 @@ class AccountController extends AbstractController
         
 
         return $this->render('account/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+        /**
+     * @Route("/account/change-password", name="app_account_change_password", methods={"GET","POST"})
+     */
+    public function changePassword(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        if (!$this->getUser()) {
+            $this->addFlash('error' , 'You are not logged');
+            return $this->redirectToRoute('app_login');
+        }
+
+      
+        $user = $this->getUser();
+
+        $form = $this->createForm(ChangePasswordFormType::class);
+        
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $encodedPassword = $passwordHasher->hashPassword($user,$form->get('plainPassword')->getData());
+            $user->setPassword($encodedPassword);
+            $em->flush();
+ 
+            $this->addFlash('success','Password updated successfully');
+ 
+            return $this->redirectToRoute('app_account');
+         }
+
+        return $this->render('account/change_password.html.twig', [
             'form' => $form->createView()
         ]);
     }
