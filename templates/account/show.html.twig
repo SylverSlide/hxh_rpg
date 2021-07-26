@@ -9,16 +9,18 @@
 			<h1 class="my-5">Profile</h1>
 
 
-			<img id="avatar_profil" class="rounded-circle shadow" src="{{ asset('build/images/bean.png') }}" alt="{{ app.user.fullName }}'s Avatar">
+			<img id="avatar_image" class="rounded-circle shadow" src="{{ asset('build/images/bean.png')}}" alt="{{ app.user.fullName }}'s Avatar">
 
 			<p class="mt-5 lead">
 				{{ app.user.email }}
 			</p>
 
 			<h2>{{ app.user.fullName }}</h2>
+			
+			<p><small>Account created on {{ app.user.createdAt|date('d/m/Y') }}</small></p>
 
 			<p>
-				<a href="#">
+				<a href="{{ path('app_account_edit') }}">
 					Edit Account
 				</a>
 				|

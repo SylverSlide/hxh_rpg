@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\UserFormType;
 use App\Security\EmailVerifier;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,14 +27,24 @@ class AccountController extends AbstractController
      */
     public function index(): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash('error' , 'You are not logged');
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('account/show.html.twig');
     }
 
-            /**
+    /**
      * @Route("/reverify/email", name="app_reverify_email")
      */
     public function SendVerifyUserEmail(Request $request ): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash('error' , 'You are not logged');
+            return $this->redirectToRoute('app_login');
+        }
+
         
         $this->addFlash('success', 'Un mail vous a été envoyé');
             if ($this->getUser() && !($this->getUser()->isVerified())) {
@@ -50,5 +62,38 @@ class AccountController extends AbstractController
 
             return $this->redirectToRoute('app_home');
         }
+    }
+
+    /**
+     * @Route("/account/edit", name="app_account_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, EntityManagerInterface $em) :Response {
+
+        if (!$this->getUser()) {
+            $this->addFlash('error' , 'You are not logged');
+            return $this->redirectToRoute('app_login');
+        }
+
+
+
+        $user = $this->getUser();
+        
+        $form = $this->createForm(UserFormType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+      
+           $em->flush();
+
+           $this->addFlash('success','Account updated successfully');
+
+           return $this->redirectToRoute('app_account');
+        }
+        
+
+        return $this->render('account/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
